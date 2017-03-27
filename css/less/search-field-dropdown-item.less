@@ -1,0 +1,18 @@
+.sfdi {
+    padding: 6px 6px;
+    color: black;
+    &-hover {
+        cursor: pointer;
+        background: lightblue;
+    }
+    
+    &.disabled {
+        pointer-events: none;
+        cursor: no-drop;
+        color : darkgray;
+        
+        &-hover {
+            cursor: not-allowed;
+        }
+    }
+}
