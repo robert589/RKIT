@@ -11,13 +11,13 @@ console.log(argv);
 if(argv.path !== "rkit") {
     var lessFolder = './../' + argv.path +'/web/css/less/*.less';
     var compileFolder = './../' + argv.path + '/web/css/compile';
-    var buildFolder = '../' + argv.path + '/web/css/build';
-    var compileFiles = '../' + compileFolder + "/**/*.css";
+    var buildFolder = './../' + argv.path + '/web/css/build';
+    var compileFiles = compileFolder + "/**/*.css";
 } else {
     var lessFolder = './../' + argv.path +'/css/less/*.less';
     var compileFolder = './../' + argv.path + '/css/compile';
     var buildFolder = './../' + argv.path + '/css/build';
-    var compileFiles = '../' + compileFolder + "/**/*.css";
+    var compileFiles = compileFolder + "/**/*.css";
 }
 gulp.task("js", function () {
     var tsProject = ts.createProject("../" + argv.path + "/web/js/tsconfig.json");
@@ -37,7 +37,7 @@ gulp.task('minify', ['less'], function(){
         .pipe(minifyCSS())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
         .pipe(concat('build.min.css'))
-        .pipe(gulp.dest(buildFolder))
+        .pipe(gulp.dest(buildFolder));
 });
 
 gulp.task('css', ['less', 'minify']);
