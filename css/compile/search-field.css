@@ -1,0 +1,33 @@
+.search-field {
+  position: relative;
+}
+.search-field-flex {
+  display: flex;
+}
+.search-field-reset {
+  margin-left: -20px;
+  margin-top: 1px;
+  width: 10px;
+  padding: 0;
+  outline: none;
+}
+.search-field-input {
+  border: 1px solid #d3d3d3;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.search-field-input.selected {
+  background: whitesmoke;
+}
+.search-field-loading {
+  padding: 8px;
+}
+.search-field-dropdown,
+.search-field-loading {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid lightgray;
+  background: white;
+}

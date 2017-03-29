@@ -1,0 +1,22 @@
+.view {
+  background: white;
+  padding: 16px;
+}
+.view-header {
+  padding: 8px 0;
+  font-weight: bold;
+  font-size: 22px;
+}
+.view-header-btn {
+  max-width: 230px;
+  width: auto;
+  padding: 4px;
+  float: right;
+  margin-left: 8px;
+}
+.view-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  padding: 8px 0 ;
+  font-size: 16px;
+}
