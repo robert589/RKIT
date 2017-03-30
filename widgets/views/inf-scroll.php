@@ -1,5 +1,5 @@
 <?php
-    use common\widgets\Button;
+    use rkit\widgets\Button;
 ?>
 <div id="<?= $id ?>" class="inf-scroll <?= $widget_class ?>"
      data-load-url="<?= $url ?>"

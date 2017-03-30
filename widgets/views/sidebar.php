@@ -1,5 +1,5 @@
 <?php
-    use common\widgets\SidebarItem;
+    use rkit\widgets\SidebarItem;
 ?>
 
 <div id="<?= $id ?>" class="sidebar">

@@ -1,6 +1,6 @@
 <?php
-    use common\widgets\Modal;
-    use common\widgets\ImageViewModal;
+    use rkit\widgets\Modal;
+    use rkit\widgets\ImageViewModal;
 ?>
 
 <div id="<?= $id ?>" class="image-view">

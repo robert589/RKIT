@@ -1,5 +1,5 @@
 <?php
-    use common\widgets\Modal;
+    use rkit\widgets\Modal;
 ?>
 
 <?php Modal::begin(['id' => $id, 'title' => $title]); ?>

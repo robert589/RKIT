@@ -1,5 +1,5 @@
 <?php
-    use common\widgets\Modal;
+    use rkit\widgets\Modal;
 ?>
 
 <div id="<?= $id ?>" class="upload-image">

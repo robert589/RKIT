@@ -1,6 +1,6 @@
 <?php
-    use common\widgets\Form;
-    use common\widgets\Button;
+    use rkit\widgets\Form;
+    use rkit\widgets\Button;
 ?>
 <form id="<?= $id ?>" method="<?= $method ?>" 
       action="<?= $url ?>"
