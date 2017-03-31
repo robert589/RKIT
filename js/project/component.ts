@@ -1,3 +1,5 @@
+import {Animate} from './animate';
+
 export abstract class Component {
     protected root : HTMLElement;
     
@@ -65,10 +67,7 @@ export abstract class Component {
     }
 
     animateRight(right : number = 100, step : number = 10, delay : number = 100) {
-        this.root.scrollLeft -= step;
-        if(right > 0) {
-            setTimeout(this.animateRight(right - step, right, delay), delay);
-        }
+        Animate.animateRight(this.root, right,step,delay);
     }
 } 
 

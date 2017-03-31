@@ -1,6 +1,5 @@
 .hor-cont {
   white-space: nowrap;
-  overflow: hidden;
   position: relative;
 }
 .hor-cont-header {
@@ -8,6 +7,9 @@
 }
 .hor-cont-scrollable {
   position: relative;
+}
+.hor-cont-content {
+  overflow: hidden;
 }
 .hor-cont-left-right {
   position: absolute;
