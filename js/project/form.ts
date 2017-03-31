@@ -31,8 +31,11 @@ export abstract class Form extends Component {
 
     enableSubmit : number = 0;
 
+    enableAjaxSubmit : number = 1;
+
     constructor(root : HTMLElement) {
         super(root);
+        this.enableAjaxSubmit = parseInt(this.root.getAttribute('data-enable-ajax-submit')) ? 1 : 0;
         this.rules();
     }
 
@@ -55,8 +58,10 @@ export abstract class Form extends Component {
     bindEvent() {
         super.bindEvent();
         this.root.onsubmit = function(e) {
-            return false;
-        };
+            if(this.enableAjaxSubmit) {
+                return false;
+            }
+        }.bind(this);
 
         this.root.onkeypress = function(e) {
             if(e.keyCode === 13) {
@@ -162,14 +167,18 @@ export abstract class Form extends Component {
 
         var valid = this.validate();
         if(valid) {
-            this.sendToServerSide();
+            if(this.enableAjaxSubmit) {
+                this.sendViaAjax();
+            } else {
+                (<HTMLFormElement> this.root).submit();
+            }
         }
 
         return false;
     }
 
 
-    sendToServerSide() {
+    private sendViaAjax() {
         this.submitButton.disable(true);
         
         let ajaxSettings : JQueryAjaxSettings = {

@@ -63,7 +63,14 @@ export abstract class Component {
     attachEvent(eventName : string, callback: EventListener) {
         this.root.addEventListener(eventName, callback);
     }
-}
+
+    animateRight(right : number = 100, step : number = 10, delay : number = 100) {
+        this.root.scrollLeft -= step;
+        if(right > 0) {
+            setTimeout(this.animateRight(right - step, right, delay), delay);
+        }
+    }
+} 
 
 
 

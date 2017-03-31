@@ -1,0 +1,28 @@
+.hor-cont {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+.hor-cont-header {
+  margin: 8px 0;
+}
+.hor-cont-scrollable {
+  position: relative;
+}
+.hor-cont-left-right {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+}
+.hor-cont-left-right > .button-link {
+  font-size: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hor-cont-left-right > .button-link:first-child {
+  float: left;
+}
+.hor-cont-left-right > .button-link:last-child {
+  float: right;
+}

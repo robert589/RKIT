@@ -3,6 +3,7 @@
     use rkit\widgets\Button;
 ?>
 <form id="<?= $id ?>" method="<?= $method ?>" 
+      data-enable-ajax-submit="<?= $enableAjaxSubmit ?>"
       action="<?= $url ?>"
       url="<?= $url ?>" class="<?= $widget_class ?>" data-file="<?= $file ?>">
     <?= $content ?>

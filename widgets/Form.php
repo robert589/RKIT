@@ -19,6 +19,8 @@ class Form extends widget {
     
     public $file = false;
     
+    public $enableAjaxSubmit = 1;
+    
     public $button_text = 'Submit';
     
     public $enable_button = true;
@@ -31,6 +33,7 @@ class Form extends widget {
     public function run() {
         $content = ob_get_clean();
         return $this->render('form', ['content' => $content, 'file' => $this->file,
+                                    'enableAjaxSubmit' => $this->enableAjaxSubmit,
                                     'widget_class' => $this->widget_class, 'enable_button' => $this->enable_button,
                                     'id' => $this->id, 'method' => $this->method, 'url' => $this->url, 'button_text' => $this->button_text]);
     
