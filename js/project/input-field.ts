@@ -14,11 +14,13 @@ export class InputField extends Field {
     private keyPressedEvent : CustomEvent;
     
     private type : string;
+
+    private selectDir : number = 0;
     
     constructor(root : HTMLElement) {
         super(root);
         this.type = this.inputElement.getAttribute("type");
-            
+        this.selectDir = parseInt(this.root.getAttribute('data-select-dir'));
     }
 
     decorate() {
@@ -73,8 +75,11 @@ export class InputField extends Field {
         
     }
 
-    getValue() : Object {
+    getValue() : any {
         if(this.type === "file" ) {
+            if(this.selectDir) {
+                return this.inputElement.files;
+            }
             return this.inputElement.files[0];
         }
         return this.inputElement.value;

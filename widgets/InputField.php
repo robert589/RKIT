@@ -32,7 +32,11 @@ class InputField extends Widget {
     
     public $datepicker = false;
     
+    public $inputOptionClass;
+    
     public $monthpicker = false;
+    
+    public $selectDir = false;
     
     public $newClass;
     
@@ -43,7 +47,9 @@ class InputField extends Widget {
     public $max = null;
     
     public function init() {
-    
+        if(!$this->inputOptionClass) {
+            $this->inputOptionClass = [];
+        }
     }
     
     public function run() {
@@ -53,8 +59,19 @@ class InputField extends Widget {
                                         'value' => $this->value, 'min' => $this->min, 'max' => $this->max,
                                         'datepicker' => $this->datepicker,
                                         'disabled' => $this->disabled,
+                                        'inputOptionClass' => $this->changeToTextForInputOption(),
+                                        'selectDir' => $this->selectDir ? 1 :0,
                                         'timepicker'=> $this->timepicker,
                                         'monthpicker' => $this->monthpicker,
                                         'placeholder' => $this->placeholder]);
+    }
+    
+    private function changeToTextForInputOption() {
+        $stringified = '';
+        foreach($this->inputOptionClass as $index => $datum) {
+            $stringified .= $index . '=' . $datum . ' ';
+        }
+        
+        return $stringified;   
     }
 }

@@ -10,4 +10,13 @@ export class Animate  {
             setTimeout(Animate.animateRight(element, right - step, right, delay), delay);
         }
     }
+
+    
+    public static animateLeft(element : HTMLElement, left : number = 2000, 
+                    step : number = 1, delay : number = 25) {
+        element.scrollLeft -= step;
+        if(left > 0) {
+            setTimeout(Animate.animateRight(element, left - step, left, delay), delay);
+        }
+    }
 }

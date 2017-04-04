@@ -15,6 +15,8 @@ class UploadField extends Widget {
     
     public $filePath = null;
     
+    public $directory = false;
+    
     public function init() {
         parent::init();
     }
@@ -25,7 +27,7 @@ class UploadField extends Widget {
                     'value' => $this->value,
                     'fileName' => $this->fileName,
                     'filePath' => $this->filePath,
-        
+                    'directory' => $this->directory ? 1 : 0,
                     'url' => $this->url]);
     }
 }

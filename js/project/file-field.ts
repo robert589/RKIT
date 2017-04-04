@@ -9,11 +9,14 @@ export class FileField extends Field {
     previewImg : HTMLElement;
 
     clickableImg : HTMLElement;
+
+    url : string;
     
     changeInputEvent : CustomEvent;
 
     constructor(root : HTMLElement) {
         super(root);
+        this.url = this.root.getAttribute('data-url');
     }
 
     decorate() {

@@ -69,6 +69,11 @@ export abstract class Component {
     animateRight(right : number = 100, step : number = 10, delay : number = 100) {
         Animate.animateRight(this.root, right,step,delay);
     }
+
+    
+    animateLeft(left : number = 100, step : number = 10, delay : number = 100) {
+        Animate.animateRight(this.root, left,step,delay);
+    }
 } 
 
 

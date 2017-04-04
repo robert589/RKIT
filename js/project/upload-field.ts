@@ -31,11 +31,14 @@ export class UploadField extends Field {
 
     cancelBtn : Button;
 
+    directory : number = 0;
+
     fileName : string;
 
     constructor(root : HTMLElement) {
         super(root);
         this.url = this.root.getAttribute('data-url');
+        this.directory = parseInt(this.root.getAttribute('data-directory'));
 
         let value : string = this.root.getAttribute('data-value');
         let filePath : string = this.root.getAttribute('data-file-path');
@@ -88,10 +91,18 @@ export class UploadField extends Field {
         this.setStatus(this.loadingTextStatus);
         let formData = new FormData();
         let files = this.fileField.getValue();
-        formData.append("file", files);
+
+        if(this.directory) {
+            for(let i = 0; i < files.length; i++) {
+                formData.append("files[]", files[i]);    
+                formData.append("filespath[]", files[i].webkitRelativePath)
+            }
+        } else {
+            formData.append("file", files);
+        }
         formData.append(System.getCsrfParam(), System.getCsrfValue());
         let ajaxSettings : JQueryAjaxSettings = {
-            url : System.getBaseUrl() + "/file/upload",
+            url : this.url,
             type: "post",
             context : this,
             data : formData,

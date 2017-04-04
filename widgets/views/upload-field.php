@@ -9,10 +9,13 @@
      data-value="<?= $value ?>"
      data-file-name="<?= $fileName ?>"
      data-file-path="<?= $filePath ?>"
+     data-directory="<?= $directory ?>"
      data-name="<?= $name ?>">
     <div class="upload-field-row upload-field-upload">
         
-        <?= InputField::widget(['id' => $id . '-file', 'type' => InputField::FIlE]) ?>
+        <?= InputField::widget(['id' => $id . '-file',
+            'selectDir' => $directory,
+            'type' => InputField::FIlE]) ?>
         <span class="upload-field-status">
             
         </span>
