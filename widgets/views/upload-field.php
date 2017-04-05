@@ -12,7 +12,6 @@
      data-directory="<?= $directory ?>"
      data-name="<?= $name ?>">
     <div class="upload-field-row upload-field-upload">
-        
         <?= InputField::widget(['id' => $id . '-file',
             'selectDir' => $directory,
             'type' => InputField::FIlE]) ?>

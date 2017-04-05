@@ -8,7 +8,7 @@ use rkit\components\RVo;
 abstract class RVo2 extends RModel {
     abstract static function createBuilder();
     
-    public function getJson() {
+    public function getDataArray() {
         $f = new \ReflectionClass($this->className());
         $methods = array();
         foreach ($f->getMethods() as $m) {
@@ -22,17 +22,22 @@ abstract class RVo2 extends RModel {
             if(is_callable(array($this, $method))){
                 $result = $this->$method();
                 $dataName = $this->getDataName($method);
-
-                if(!is_object($result)) {
+                
+                if(!$result) {
+                    
+                }
+                else if(!is_object($result)) {
                    $data[$dataName] = $result;
-                } else if($result instanceof RVo2) {
-                    $data[$dataName] = $result->getJson();
+                } 
+                
+                else if($result instanceof RVo2) {
+                    $data[$dataName] = $result->getDataArray();
                     
                 }
             }
             
         }
-        return json_encode($data);
+        return $data;
     }
     
     private function getDataName($methodName) {
