@@ -7,6 +7,8 @@ export class UploadField extends Field {
 
     public static get UPLOADED_SUCCESSFULLY_EVENT() : string {return "UPLOAD_FIELD_UPLOADED_SUCCESSFULLY"};
 
+    public static get CANCELLED_EVENT() : string {return "UPLOAD_FIELD_CANCELLED_EVENT";}
+    
     uploadedTextStatus : string = "Uploaded..";
 
     loadingTextStatus : string = "Loading..";
@@ -35,6 +37,8 @@ export class UploadField extends Field {
 
     fileName : string;
 
+    cancelledEvent : CustomEvent;
+
     constructor(root : HTMLElement) {
         super(root);
         this.url = this.root.getAttribute('data-url');
@@ -55,6 +59,7 @@ export class UploadField extends Field {
     }
 
     resetValue() {
+        this.triggerCancelledEvent();
         this.fileField.setValue(null);
         this.value = null;
         this.setStatus("");
@@ -84,6 +89,7 @@ export class UploadField extends Field {
             id : this.id
         };
 
+        this.cancelledEvent = new CustomEvent(UploadField.CANCELLED_EVENT);
         this.uploadedSuccessfullyEvent = new CustomEvent(UploadField.UPLOADED_SUCCESSFULLY_EVENT, {detail : json });
     }
 
@@ -150,6 +156,11 @@ export class UploadField extends Field {
     triggerUploadedEvent() {
         this.root.dispatchEvent(this.uploadedSuccessfullyEvent);
     }
+
+    triggerCancelledEvent() {
+        this.root.dispatchEvent(this.cancelledEvent);
+    }
+
     detach() {
     }
 }

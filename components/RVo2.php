@@ -40,6 +40,33 @@ abstract class RVo2 extends RModel {
         return $data;
     }
     
+    public function getDataIn1DArray($excepts = []) {
+        $data = $this->getDataArray();
+        $newData = [];
+        
+        $newData = $this->flatten($data, "");
+        
+        foreach($excepts as $except) {
+            unset($newData[$except]);
+        }
+        
+        return $newData;
+    }
+    
+    private function flatten($data, $rootName) {
+        $newData = [];
+        foreach($data as $name => $datum) {
+            if(is_array($datum)) {
+                $newData = array_merge($newData, $this->flatten($datum, $name . "_"));
+            } else {
+                $newData[$rootName . $name] = $datum;
+            }
+        }
+        
+        
+        return $newData;
+    }
+    
     private function getDataName($methodName) {
         $dataName = CommonLibrary::convertCamelCaseToUnderscore($methodName);
         

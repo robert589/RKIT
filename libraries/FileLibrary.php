@@ -8,7 +8,7 @@ class FileLibrary {
     }
    
     public static function getFullPath($databasePath) {
-        return \Yii::$app->request->baseUrl . '/' . $databasePath;
+        return "localhost/imav/admin/file/index?path=" . $databasePath;
     }
  
     public static function reArrayFiles(&$file_post) {
